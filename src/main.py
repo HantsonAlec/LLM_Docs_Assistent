@@ -38,12 +38,12 @@ if q:
 
         st.session_state["user_prompt_history"].append(q)
         st.session_state["chat_answer_history"].append(formatted_response)
-        st.session_state["chat_answer_history"].append(("human", q))
-        st.session_state["chat_answer_history"].append(("ai", generated_response['result']))
+        st.session_state["chat_history"].append(("human", q))
+        st.session_state["chat_history"].append(("ai", generated_response['result']))
 
 if st.session_state["chat_answer_history"]:
     for user_query, generated_response in zip(
         st.session_state["user_prompt_history"], st.session_state["chat_answer_history"]
     ):
         message(user_query, is_user=True)
-        message(generated_response, is_user=False)
+        message(generated_response)
