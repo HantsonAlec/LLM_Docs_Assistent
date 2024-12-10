@@ -19,13 +19,14 @@ DOCS_PATH = (
 )
 BASE_PATH_STR = str(DOCS_PATH.parent.parent.parent)
 LOADER = ReadTheDocsLoader(DOCS_PATH)
-EMBEDDING_MODEL = OllamaEmbeddings(model="llama3")
+EMBEDDING_MODEL = OllamaEmbeddings(model="llama3.2:1b")
 TEXT_SPLITTER = RecursiveCharacterTextSplitter(chunk_size=600, chunk_overlap=50)
 
 
 def ingest_docs():
     raw_documents = LOADER.load()
     documents = TEXT_SPLITTER.split_documents(raw_documents)
+    documents = [doc for doc in documents if doc.page_content.strip()]
     for doc in documents:
         source_url = doc.metadata["source"]
         new_url = source_url.replace(BASE_PATH_STR, "https:/")

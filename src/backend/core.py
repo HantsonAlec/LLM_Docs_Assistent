@@ -10,11 +10,11 @@ from langchain_ollama import OllamaEmbeddings, ChatOllama
 from langchain_pinecone import PineconeVectorStore
 
 load_dotenv()
-EMBEDDING_MODEL = OllamaEmbeddings(model="llama3")
+EMBEDDING_MODEL = OllamaEmbeddings(model="llama3.2:1b")
 RETRIEVER = PineconeVectorStore(
     embedding=EMBEDDING_MODEL, index_name=os.getenv("INDEX_NAME")
 )
-LLM_MODEL = ChatOllama(model="llama3")
+LLM_MODEL = ChatOllama(model="llama3.2:1b")
 RETRIEVAL_QA_PROMPT = hub.pull("langchain-ai/retrieval-qa-chat")
 REPHRASE_PROMPT = hub.pull("langchain-ai/chat-langchain-rephrase")
 STUFF_DOCUMENT_CHAIN = create_stuff_documents_chain(LLM_MODEL, RETRIEVAL_QA_PROMPT)
