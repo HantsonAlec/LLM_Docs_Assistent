@@ -19,7 +19,7 @@ DOCS_PATH = (
 )
 BASE_PATH_STR = str(DOCS_PATH.parent.parent.parent)
 LOADER = ReadTheDocsLoader(DOCS_PATH)
-EMBEDDING_MODEL = OllamaEmbeddings(model="llama3.2:1b")
+EMBEDDING_MODEL = OllamaEmbeddings(model='qwen2:0.5b')
 TEXT_SPLITTER = RecursiveCharacterTextSplitter(chunk_size=600, chunk_overlap=50)
 
 
