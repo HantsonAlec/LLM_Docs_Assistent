@@ -5,7 +5,7 @@ The model will be able to answer questions based on the *provided vector store*.
 ## Setup
 
 - Hardware: Raspberry Pi 4. With 4GB of RAM
-- LLM: Llama3.2 - 1b version
+- LLM: qwen2:0.5b
 - Vector store: pinecone dimension 896
 
 
